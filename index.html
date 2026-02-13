@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>health informatician · personal profile</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eaf0f5;  /* soft medical / tech background */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            line-height: 1.5;
+            color: #1b2b3f;
+        }
+
+        /* main card – professional profile layout */
+        .profile-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px -12px rgba(18, 52, 77, 0.25);
+            overflow: hidden;
+            transition: all 0.2s;
+            border: 1px solid #dde7f0;
+        }
+
+        /* header: name + role + brief */
+        .profile-header {
+            background: linear-gradient(105deg, #f6fbfe 0%, #edf4fa 100%);
+            padding: 2.2rem 3rem 1.8rem 3rem;
+            border-bottom: 1px solid #cddde9;
+        }
+
+        .name-title h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0c2b41;
+            margin-bottom: 0.2rem;
+        }
+
+        .name-title .subhead {
+            font-size: 1.25rem;
+            font-weight: 380;
+            color: #2d4b65;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .name-title .subhead i {
+            color: #2f7c9e;
+            font-size: 1.2rem;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .badge {
+            background: white;
+            border-radius: 50px;
+            padding: 0.4rem 1.3rem;
+            font-size: 0.9rem;
+            font-weight: 470;
+            color: #1d4c6b;
+            box-shadow: 0 2px 6px rgba(0,35,60,0.08);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid #bcd3e2;
+        }
+
+        .badge i {
+            color: #1f6e94;
+        }
+
+        /* main grid — skills / weaknesses / project */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem 3rem;
+        }
+
+        /* left column: skills + weaknesses (two separate blocks) */
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .skill-block, .weak-block {
+            background: #f9fcff;
+            border-radius: 1.8rem;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e2eef9;
+            box-shadow: 0 4px 12px -8px rgba(30, 60, 90, 0.15);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.3rem;
+            font-weight: 550;
+            color: #143e5c;
+            margin-bottom: 1.4rem;
+            border-bottom: 2px solid #cfe0ed;
+            padding-bottom: 0.6rem;
+        }
+
+        .section-title i {
+            color: #2b7ca0;
+            font-size: 1.3rem;
+            width: 1.8rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .skill-item i.fa-circle-check {
+            color: #1f8b6b;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+            min-width: 1.2rem;
+        }
+
+        .skill-item .skill-desc strong {
+            color: #0e3c54;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .skill-item .skill-desc {
+            color: #1f405b;
+            font-size: 0.96rem;
+        }
+
+        .weak-list {
+            list-style: none;
+        }
+
+        .weak-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .weak-list i.fa-circle-exclamation {
+            color: #bc6c4b;
+            font-size: 1rem;
+            margin-top: 0.2rem;
+            min-width: 1.2rem;
+        }
+
+        .weak-list span {
+            color: #1f405b;
+            font-size: 0.98rem;
+        }
+
+        .weak-list strong {
+            color: #0d3146;
+            font-weight: 600;
+        }
+
+        .growth-question {
+            background: #e2eff9;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-top: 1rem;
+            color: #0c364f;
+            font-size: 0.98rem;
+            border-left: 4px solid #2f7c9e;
+        }
+
+        .growth-question i {
+            color: #1f6390;
+            margin-right: 0.4rem;
+        }
+
+        /* right column: sample project */
+        .project-block {
+            background: #f9fcff;
+            border-radius: 1.8rem;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e2eef9;
+            box-shadow: 0 4px 12px -8px rgba(30, 60, 90, 0.15);
+            height: fit-content;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 560;
+            color: #113952;
+            margin: 0.5rem 0 0.2rem 0;
+        }
+
+        .project-sub {
+            color: #34698c;
+            font-weight: 400;
+            margin-bottom: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-sub i {
+            color: #1f7b9e;
+        }
+
+        .project-desc {
+            color: #1d4059;
+            margin: 1.2rem 0 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        .project-highlight {
+            background: #ecf5fc;
+            border-radius: 1.4rem;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0 1.2rem 0;
+            border: 1px dashed #94bcd6;
+        }
+
+        .project-highlight p {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+        }
+
+        .project-highlight i {
+            color: #2c7ca4;
+            font-size: 1.2rem;
+            margin-top: 0.15rem;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #1d3f5c;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 470;
+            margin-top: 0.7rem;
+            transition: background 0.15s;
+            border: 1px solid #16445f;
+        }
+
+        .github-link i {
+            font-size: 1.2rem;
+        }
+
+        .github-link:hover {
+            background: #0f314a;
+        }
+
+        /* footer: simple */
+        .profile-footer {
+            background: #e9f1f8;
+            padding: 1.2rem 3rem;
+            text-align: center;
+            color: #2f5779;
+            font-size: 0.9rem;
+            border-top: 1px solid #cbdbe9;
+        }
+
+        .profile-footer i {
+            color: #a54f2c;
+        }
+
+        /* small screens */
+        @media (max-width: 750px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+            }
+            .profile-header {
+                padding: 1.8rem 1.8rem;
+            }
+            .name-title h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <!-- header: name + identity -->
+        <div class="profile-header">
+            <div class="name-title">
+                <h1>Noor-AlHuda A. Abdulhameed</h1>
+                <div class="subhead">
+                    <i class="fas fa-heart-pulse"></i> AI Bioinformatician (M. Sc. Student)
+                </div>
+                <div class="badge-row">
+                    <span class="badge"><i class="fas fa-microchip"></i> AI in healthcare </span>
+                    <span class="badge"><i class="fas fa-file-waveform"></i> Medical & genomic datasets (EHRs) </span>
+                    <span class="badge"><i class="fas fa-lungs"></i> Clinical NLP </span>
+                    <span class="badge"><i class="fas fa-flask"></i> Research mindset</span>
+                    <span class="badge"><i class="fas fa-brain"></i> Critical thinking & problem solving </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- main grid: exactly what the assignment asks -->
+        <div class="main-grid">
+            <!-- left column: skills + weaknesses + growth question -->
+            <div class="left-col">
+                <!-- skills block (current skills) -->
+                <div class="skill-block">
+                    <div class="section-title">
+                        <i class="fas fa-stethoscope"></i>
+                        <span>Current Skills · Informatics & AI</span>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fa-regular fa-circle-check"></i>
+                            <div class="skill-desc">
+                                <strong> Clinical & Multi-omics Data Analysis </strong> (Python, pandas, SQL) – experienced with biomarker discovery using imaging, clinical text, and gene expression data.
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-regular fa-circle-check"></i>
+                            <div class="skill-desc">
+                                <strong>Machine Learning Fundamentals</strong> – scikit-learn, basic PyTorch for classification/regression on clinical outcomes.
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-regular fa-circle-check"></i>
+                            <div class="skill-desc">
+                                <strong>Interdisciplinary Communication</strong> – bridge between clinicians and technical teams.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- weaknesses block + "what would make you better" -->
+                <div class="weak-block">
+                    <div class="section-title">
+                        <i class="fas fa-seedling"></i>
+                        <span>Growing Edges & Weaknesses</span>
+                    </div>
+                    <ul class="weak-list">
+                        <li>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span><strong>Programming & Software Development:</strong> Strengthening skills in R and building production-ready AI models.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span><strong>Biostatistics :</strong> Moving beyond correlation to causal inference and advanced statistical methods for biomedical data.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span><strong>Data Engineering:</strong> Building proficiency in DBMS tools and big data technologies for large-scale genomic/clinical data.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span><strong>Data Engineering & Infrastructure:</strong> Strenghthening my skills in various DBMS tools and Big Data.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span><strong>Wet-Lab Techniques – seeking hands-on experience with:</strong> <br>
+                                <ul>
+                                    <i class="fas fa-dna"></i> <strong> NGS Library Prep </strong> & sequencing workflows.</span>
+                                </ul>
+                                <ul>
+                                    <i class="fas fa-microscope"></i> <strong> PCR/qPCR</strong> and basic molecular techniques.</span>
+                                </ul>
+                                <ul>
+                                    <i class="fas fa-vial"></i> <strong> DNA/RNA Extraction </strong> Sample preparation protocols.</span>
+                                </ul>
+                                <ul>
+                                    <i class="fas fa-cut"></i> <strong> CRISPR </strong> gene editing basics.</span>
+                                </ul>
+                                <ul>
+                                    <i class="fas fa-flask"></i> <strong> Experimental Design</strong> for better collaboration with bench scientists.
+                                </ul>
+                    </ul>
+
+                    <!-- direct answer to "what would make you a better health informatician/medical AI developer?" -->
+                    <div class="growth-question">
+                        <i class="fas fa-comment-dots"></i> 
+                        <strong>To become better I need:</strong> deeper clinical immersion (spend time with EHR workflows), rigorous training in explainable AI, wet-lab experiments, and hands-on projects that go from research to prototype. I’m also learning regulatory/ethics aspects (FDA, HIPAA) to build trustworthy systems.
+                    </div>
+                </div>
+            </div>
+
+            <!-- right column: sample project (with github link) -->
+            <div class="project-block">
+                <div class="section-title">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Sample Project · Github</span>
+                </div>
+                <div class="project-title">🧬 A Comparative ML and DL Workflow for Distinguishing AML and ALL</div>
+                <div class="project-sub">
+                    <i class="fas fa-database"></i> Gene Expression (.csv)
+                    <i class="fas fa-code-branch"></i> DL, RF, LR, Linear SVM · 
+                    <i class="fas fa-chart-line"></i> Accuracy 0.83-0.100 .
+                </div>
+                <p class="project-desc">
+                    Built a modern diagnostic and research paradigm that uses more advanced models to analyze the molecular profile—primarily gene expression, but also mutations and chromosomal alterations—of leukemia cells to define distinct disease subtypes. 
+                </p>
+                <div class="project-highlight">
+                    <p>
+                        <i class="fas fa-lightbulb"></i>
+                        <span><strong>What we did:</strong> feature engineering due to high feature dimentionality (using ANOVA F-test) and compared various ML and DL models for precise accuracy. 
+                        </span>
+                    </p>
+                </div>
+                <p style="margin: 1rem 0 0.4rem; color:#23648A">
+                    <i class="fa-regular fa-folder-open"></i> Full code & documentation:
+                </p>
+                <a href="https://github.com/NoorAlHuda-afk/Molecular-Classification-of-Leukemia" class="github-link" target="_blank">
+                    <i class="fab fa-github"></i> github
+                </a>
+                <a href="https://www.linkedin.com/in/noor-alhuda-a-a34228276/" class="github-link" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
